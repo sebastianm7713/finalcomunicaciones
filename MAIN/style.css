@@ -1,0 +1,545 @@
+/* Estilos base */
+:root {
+    --primary: #6a11cb;
+    --secondary: #2575fc;
+    --accent: #ff9d00;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #25ca7f;
+    --warning: #ffbe0b;
+    --info: #3a86ff;
+    --danger: #ff006e;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background-attachment: fixed;
+    color: var(--dark);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Efecto de partículas para el fondo */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.2)"/></svg>');
+    pointer-events: none;
+    z-index: -1;
+    animation: floatParticles 120s linear infinite;
+  }
+  
+  @keyframes floatParticles {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+  }
+  
+  /* Header con efecto de glassmorphism */
+  header {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: var(--light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    transform: translateY(0);
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    margin: 10px 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+  
+  header a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  header a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Secciones principales */
+  main {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    transition: left 0.7s ease;
+  }
+  
+  section:hover::before {
+    left: 100%;
+  }
+  
+  section:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  section h2 {
+    position: relative;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    display: inline-block;
+  }
+  
+  section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.5s ease;
+  }
+  
+  section:hover h2::after {
+    width: 100%;
+  }
+  
+  section h2 a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+  
+  section h2 a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(255, 157, 0, 0.5);
+  }
+  
+  /* Listas con animaciones */
+  section.trabajos {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+  }
+  
+  section.trabajos h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+  }
+  
+  section.trabajos ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  section.trabajos ul li {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  section.trabajos ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--dark);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(106, 17, 203, 0.1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  section.trabajos ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+  }
+  
+  section.trabajos ul li a:hover {
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.2);
+  }
+  
+  section.trabajos ul li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Estilos para el cuento */
+  .cuento {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: justify;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cuento::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  .cuento:hover::before {
+    opacity: 1;
+  }
+  
+  .cuento h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  .cuento h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+  
+  .cuento p {
+    font-size: 1.2rem;
+    color: var(--dark);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Estilos para funciones del lenguaje */
+  .func-lengu, .lectora, .no-verbal, .tipos-comunicacion {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 900px;
+    margin: 40px auto;
+  }
+  
+  .func-lengu h1, .lectora h2, .no-verbal h1, .tipos-comunicacion h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .func-lengu h1::after, .lectora h2::after, .no-verbal h1::after, .tipos-comunicacion h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+  
+  .func-lengu h3, .no-verbal h3 {
+    font-size: 1.8rem;
+    color: var(--secondary);
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .func-lengu h4, .lectora h4, .no-verbal h4, .tipos-comunicacion h4 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin: 15px 0 10px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .func-lengu h4::after, .lectora h4::after, .no-verbal h4::after, .tipos-comunicacion h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  
+  .func-lengu:hover h4::after, .lectora:hover h4::after, .no-verbal:hover h4::after, .tipos-comunicacion:hover h4::after {
+    width: 100%;
+  }
+  
+  .lectora h5, .no-verbal h5 {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin: 10px 0 5px;
+    text-align: center;
+  }
+  
+  .func-lengu p, .lectora p, .no-verbal p, .tipos-comunicacion p {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 1.8;
+  }
+  
+  .func-lengu ul, .lectora ul, .no-verbal ul {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0;
+  }
+  
+  .func-lengu ul li, .lectora ul li, .no-verbal ul li {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 8px;
+    padding: 8px 15px;
+    background: rgba(106, 17, 203, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  .func-lengu ul li::before, .lectora ul li::before, .no-verbal ul li::before {
+    content: '•';
+    position: absolute;
+    left: 12px;
+    color: var(--accent);
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+  }
+  
+  .func-lengu ul li:hover, .lectora ul li:hover, .no-verbal ul li:hover {
+    background: rgba(106, 17, 203, 0.1);
+    transform: translateX(5px);
+  }
+  
+  .func-lengu ul li:hover::before, .lectora ul li:hover::before, .no-verbal ul li:hover::before {
+    color: var(--primary);
+    transform: scale(1.2);
+  }
+  
+  /* Botón volver */
+  #volver-inicio {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  #volver-inicio a {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  #volver-inicio a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #volver-inicio a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5);
+  }
+  
+  #volver-inicio a:hover::before {
+    opacity: 1;
+  }
+  
+  /* Footer con efecto glassmorphism */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    position: relative;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  /* Animaciones y efectos adicionales */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  main section {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+  }
+  
+  main section:nth-child(1) { animation-delay: 0.2s; }
+  main section:nth-child(2) { animation-delay: 0.4s; }
+  main section:nth-child(3) { animation-delay: 0.6s; }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+    
+    section {
+      width: 95%;
+      padding: 20px;
+    }
+    
+    .cuento, .func-lengu, .lectora, .no-verbal, .tipos-comunicacion {
+      padding: 20px;
+    }
+    
+    .func-lengu h1, .lectora h2, .no-verbal h1, .tipos-comunicacion h2 {
+      font-size: 2rem;
+    
+    }
+  }
+  
+  /* Para pantallas muy pequeñas */
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+    
+    header p {
+      font-size: 1rem;
+    }
+    
+    section {
+      padding: 15px;
+    }
+    
+    .cuento h2, .func-lengu h1, .lectora h2, .no-verbal h1, .tipos-comunicacion h2 {
+      font-size: 1.7rem;
+    }
+    
+    .cuento p, .func-lengu p, .lectora p, .no-verbal p, .tipos-comunicacion p {
+      font-size: 1rem;
+    }
+  }
